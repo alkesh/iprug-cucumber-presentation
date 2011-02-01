@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <!-- Slide meta data, remove/edit as you see fit -->
+    <title>Cucumber</title>
+    <meta name="author" content="Alkesh Vaghmaria" />
+    <meta name="date" content="2011-02-01" />
+    <meta name="venue" content="Ipswich Ruby User Group" />
+    <!-- Slippy core file and dependencies -->
+    <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="jquery.history.js"></script>
+    <script type="text/javascript" src="analytics.js"></script>
+    <script type="text/javascript" src="slippy-0.9.0.js"></script>
+    <!-- Slippy structural styles -->
+    <link type="text/css" rel="stylesheet" href="slippy-0.9.0.css"/>
+    <!-- Syntax highlighting -->
+    <script type="text/javascript" src="highlighter/shCore.js"></script>
+    <script type="text/javascript" src="highlighter/shBrushPlain.js"></script>
+    <script type="text/javascript" src="highlighter/shBrushBash.js"></script>
+    <script type="text/javascript" src="highlighter/shBrushRuby.js"></script>
+    <script type="text/javascript" src="highlighter/shBrushGherkin.js"></script>
+    <script type="text/javascript" src="highlighter/shBrushGherkinLol.js"></script>
+    <script type="text/javascript" src="highlighter/shBrushYaml.js"></script>
+    <link type="text/css" rel="stylesheet" href="highlighter/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="highlighter/shThemeEclipse.css"/>
+    <!-- Slippy theme -->
+    <link type="text/css" rel="stylesheet" href="slippy-alkesh.css"/>
+    <!-- Slippy init code -->
+    <script type="text/javascript">
+      $(function() {
+          $(".slide").slippy({
+          });
+          SyntaxHighlighter.defaults['gutter'] = false;
+          SyntaxHighlighter.defaults['toolbar'] = false;
+          SyntaxHighlighter.all();
+          });
+    </script>
+  </head>
+  <body>
+    <div class="slide">
+      <img src="images/cuke_logo.png" alt="Cucumber"/>
+      <div class="ultralight" style="margin-bottom: 200px"><a href="http://cukes.info">http://cukes.info</a></div>
+      <h2 class="center">Alkesh Vaghmaria<br />IPRUG, 1 February 2011</h2>
+      <div class="licence">
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img
+          class="leavealone"
+          alt="Creative Commons License"
+          src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+      </div>
+      <div class="footer">
+        <span class="left">Use space bar or arrow keys to navigate, escape for index, or enter slide number.</span>
+        <span class="right">Built with <a href="https://github.com/Seldaek/slippy">Slippy</a>.</span>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h1>Why Cucumber?</h1>
+      <ul>
+        <li>Behaviour-Driven Development</li>
+        <li>Outside In</li>
+        <li>Acceptance Criteria</li>
+        <li>Documentation</li>
+        <li>Integration/Functional Testing</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h1>Behaviour-Driven Development</h1>
+      <blockquote>Behaviour-Driven Development is about implementing an application by describing its behavior from the perspective of its stakeholders.</blockquote>
+      <cite><a href="http://en.wikipedia.org/wiki/Behavior_Driven_Development">http://en.wikipedia.org/wiki/Behavior_Driven_Development</a></cite>
+      <br/>
+      <cite><a href="http://dannorth.net/2011/01/31/whose-domain-is-it-anyway/">http://dannorth.net/2011/01/31/whose-domain-is-it-anyway/</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Outside In</h1>
+      <img class="hcenter" style="width: 50%" src="images/cucumber-workflow.png" alt="outside in diagram"/>
+    </div>
+
+    <div class="slide">
+      <h1>Example</h1>
+      <pre class="brush: gherkin">
+        # A comment here
+
+        Feature: Some terse yet descriptive text of what is desired
+          In order to realize a named business value
+          As a explicit system actor
+          I want to gain some beneficial outcome which furthers the goal
+
+        @secretlabel
+        Scenario: Some determinable business situation
+          Given some precondition
+          And some other precondition
+          When some action by the actor
+          And some other action
+          And yet another action
+          Then some testable outcome is achieved
+          And something else we can check happens too
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h1>Gherkin</h1>
+      <p>Keywords: i18n.yml</p>
+      <pre class="brush: yaml">
+        "en":
+          name: English
+          native: English
+          feature: Feature
+          background: Background
+          scenario: Scenario
+          scenario_outline: Scenario Outline|Scenario Template
+          examples: Examples|Scenarios
+          given: "*|Given"
+          when: "*|When"
+          then: "*|Then"
+          and: "*|And"
+          but: "*|But"
+      </pre>
+      <cite><a href="https://github.com/aslakhellesoy/gherkin/blob/master/lib/gherkin/i18n.yml">https://github.com/aslakhellesoy/gherkin/blob/master/lib/gherkin/i18n.yml</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Internationalisation</h1>
+      <pre class="brush: yaml">
+        "en-lol":
+          name: LOLCAT
+          native: LOLCAT
+          feature: OH HAI
+          background: B4
+          scenario: MISHUN
+          scenario_outline: MISHUN SRSLY
+          examples: EXAMPLZ
+          given: "*|I CAN HAZ"
+          when: "*|WEN"
+          then: "*|DEN"
+          and: "*|AN"
+          but: "*|BUT"
+      </pre>
+      <cite><a href="https://github.com/aslakhellesoy/gherkin/blob/master/lib/gherkin/i18n.yml">https://github.com/aslakhellesoy/gherkin/blob/master/lib/gherkin/i18n.yml</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Internationalisation</h1>
+      <pre class="brush: gherkinlol">
+        OH HAI: STUFFING
+
+          MISHUN: CUCUMBR
+            I CAN HAZ IN TEH BEGINNIN 3 CUCUMBRZ
+            WEN I EAT 2 CUCUMBRZ
+            DEN I HAS 2 CUCUMBERZ IN MAH BELLY
+            AN IN TEH END 1 CUCUMBRZ KTHXBAI
+      </pre>
+    </div>
+
+
+    <div class="slide">
+      <h1>Run Feature</h1>
+      <pre class="brush: gherkin">
+        # Example feature
+        Feature: To show how to run cucumber features
+          Scenario: Simplest scenario
+            When I go to the homepage
+            Then I should see "Welcome to Rails"
+      </pre>
+
+      <pre class="brush: bash; class-name: 'border'">
+        cucumber features/myfeature.feature
+        cucumber features
+        cucumber features/myfeature.feature:3
+      </pre>
+
+      <pre class="brush: plain; highlight: [5,6,7,8]; class-name: 'border'">
+        # Example feature
+        Feature: To show how to run cucumber features
+
+          Scenario: Simplest scenario  # features/example.feature:3
+            Given I am on the homepage # features/step_definitions/steps.rb:1
+              TODO (Cucumber::Pending)
+              ./features/step_definitions/steps.rb:2:in `/^I am on the homepage$/'
+              features/example.feature:4:in `Given I am on the homepage'
+
+        1 scenario (1 pending)
+        1 step (1 pending)
+        0m0.002s
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h1>Cucumber-Rails</h1>
+      <h3>Rails 2</h3>
+      <pre class="brush: bash; class-name: 'border'">
+        ruby script/generate cucumber --rspec --capybara
+      </pre>
+      <h3>Rails 3</h3>
+      <pre class="brush: ruby">
+        # Gemfile
+        group :test do
+          gem 'cucumber-rails'
+          gem 'capybara'
+          gem 'database_cleaner'
+        end
+      </pre>      
+      <pre class="brush: bash; class-name: 'border'">
+        rails generate cucumber:install
+      </pre>
+      <pre class="brush: bash">
+        create  config/cucumber.yml
+        create  script/cucumber
+        create  features/step_definitions/web_steps.rb
+        create  features/support
+        create  features/support/paths.rb
+        create  features/support/env.rb
+        create  lib/tasks/cucumber.rake
+          gsub  config/database.yml
+      </pre>
+      <cite><a href="https://github.com/aslakhellesoy/cucumber-rails">https://github.com/aslakhellesoy/cucumber-rails</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Profiles</h1>
+      <h3>cucumber.yml</h3>
+      <pre class="brush: yaml">
+        &lt;%
+        rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
+        rerun_opts = rerun.to_s.strip.empty? ? 
+          "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : 
+          "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
+        std_opts = "--format #{ENV['CUCUMBER_FORMAT'] ||
+          'progress'} --strict --tags ~@wip"
+        %&gt;
+        default: &lt;%= std_opts %&gt; features
+        wip: --tags @wip:3 --wip features
+        rerun: &lt;%= rerun_opts %&gt; --format rerun --out rerun.txt 
+          --strict --tags ~@wip
+      </pre>      
+      <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/cucumber.yml">https://github.com/aslakhellesoy/cucumber/wiki/cucumber.yml</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Paths</h1>
+      <h3>features/support/paths.rb</h3>
+      <pre class="brush: ruby">
+        module NavigationHelpers
+          def path_to(page_name)
+            case page_name
+
+            when /the home\s?page/
+              '/'
+            else
+              begin
+                page_name =~ /the (.*) page/
+                path_components = $1.split(/\s+/)
+                self.send(path_components.push('path').join('_').to_sym)
+              rescue Object => e
+                raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+                  "Now, go and add a mapping in #{__FILE__}"
+              end
+            end
+          end
+        end
+
+        World(NavigationHelpers)
+      </pre>      
+    </div>
+
+    <div class="slide">
+      <h1>database.yml</h1>
+      <pre class="brush: yaml">
+        development:
+          adapter: sqlite3
+          database: db/development.sqlite3
+          pool: 5
+          timeout: 5000
+
+        test: &amp;test
+          adapter: sqlite3
+          database: db/test.sqlite3
+          pool: 5
+          timeout: 5000
+
+        production:
+          adapter: sqlite3
+          database: db/production.sqlite3
+          pool: 5
+          timeout: 5000
+
+        cucumber:
+          &lt;&lt;: *test
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h1>Output Formats</h1>
+      <ul>
+        <li>html</li>
+        <li>json</li>
+        <li>junit</li>
+        <li>pdf</li>
+      </ul> 
+    </div>
+
+    <div class="slide">
+      <h1>HTML Output</h1>
+      <iframe width="100%" height="300" src="cucumber_html_output.html">
+      </iframe>
+    </div>
+
+    <div class="slide">
+      <h1>HTML Output</h1>
+      <iframe width="100%" height="300" src="cucumber_failure_html_output.html">
+      </iframe>
+    </div>
+
+    <div class="slide">
+      <h1>Capybara</h1>
+      <p><a href="https://github.com/jnicklas/capybara">https://github.com/jnicklas/capybara</a></p>
+      <h3>selection of steps in: features/step_definitions/web_steps.rb</h3>
+      <pre class="brush: gherkin">
+        Given I am on &lt;page_name&gt;
+        when I go to &lt;page_name&gt;
+        When I press &lt;button&gt;
+        When I follow &lt;link&gt;
+        When I fill in "&lt;field&gt;" with "&lt;value&gt;"
+        When I fill in "&lt;value&gt;" for "&lt;field&gt;"
+        When I select "&lt;value&gt;" from "&lt;field&gt;"
+        When I check "&lt;field&gt;"
+        When I choose "&lt;field&gt;"
+        Then I should see "&lt;text&gt;"
+        Then I should see /&lt;regex&gt;/
+        Then I should not see "&lt;text&gt;"
+        Then I should not see /&lt;regex&gt;/
+        Then the &quot;&lt;field&gt;&quot; field should contain &quot;&lt;value&gt;&quot;
+        Then the &quot;&lt;label&gt;&quot; checkbox should be checked
+        Then I should be on &lt;page_name&gt;
+        Then I should have the following query string &lt;expected_pairs&gt;
+        Then show me the page
+      </pre>
+      <cite><a href="https://github.com/jnicklas/capybara">https://github.com/jnicklas/capybara</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Capybara drivers</h1>
+      <ul>
+        <li>Default (rack-test)</li>
+        <li>Celerity</li>
+        <li>Culerity</li>
+        <li>Selenium</li>
+        <li>env.js</li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h1>Run Feature</h1>
+      <pre class="brush: bash; class-name: 'border'">
+        cucumber features/myfeature.feature
+      </pre>
+      <pre class="brush: bash">
+        Using the default profile...
+        ..
+
+        1 scenario (1 passed)
+        2 steps (2 passed)
+        0m0.192s
+      </pre>
+    </div>
+
+
+    <div class="slide">
+      <h1>Factory Girl</h1>
+      <h3>Factories</h3>
+      <pre class="brush: ruby">
+        Factory.define :user do |user|
+          user.email                 { Factory.next(:email) }
+          user.password              { "password"   }
+          user.password_confirmation { "password"   }
+        end
+
+        Factory.define :author, :parent => :user do |author|
+          author.after_create { |a| Factory(:article, :author => a) }
+        end
+
+        Factory.define :recruiter, :parent => :user do |recruiter|
+          recruiter.is_recruiter { true }
+        end
+      </pre>      
+      <h3>Cucumber</h3>
+      <pre class="brush: gherkin">
+        Given a user exists
+        Given an author exists with an email of "author@example.com"
+        Given the following recruiter exists:
+          | email            | phone number | employer name |
+          | bill@example.com | 1234567890   | thoughtbot    |
+      </pre>
+      <cite><a href="http://robots.thoughtbot.com/post/284805810/gimme-three-steps">http://robots.thoughtbot.com/post/284805810/gimme-three-steps</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Scenario Outlines</h1>
+      <pre class="brush: gherkin">
+        Scenario Outline: eating
+          Given there are &lt;start&gt; cucumbers
+          When I eat &lt;eat&gt; cucumbers
+          Then I should have &lt;left&gt; cucumbers
+
+          Examples:
+            | start | eat | left |
+            |  12   |  5  |  7   |
+            |  20   |  5  |  15  |
+      </pre>      
+      <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/Scenario-outlines">https://github.com/aslakhellesoy/cucumber/wiki/Scenario-outlines</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Background</h1>
+      <pre class="brush: gherkin">
+        Feature: Multiple site support
+          As a Mephisto site owner
+          I want to host blogs for different people
+          In order to make gigantic piles of money
+
+          Background:
+            Given a global administrator named "Greg"
+            And a blog named "Greg's anti-tax rants"
+            And a customer named "Dr. Bill"
+            And a blog named "Expensive Therapy" owned by "Dr. Bill"
+
+          Scenario: Dr. Bill posts to his own blog
+            Given I am logged in as Dr. Bill
+            When I try to post to "Expensive Therapy"
+            Then I should see "Your article was published."
+
+          Scenario: Dr. Bill tries to post to somebody else's blog, and fails
+            Given I am logged in as Dr. Bill
+            When I try to post to "Greg's anti-tax rants"
+            Then I should see "Hey! That's not your blog!"
+
+          Scenario: Greg posts to a client's blog
+            Given I am logged in as Greg
+            When I try to post to "Expensive Therapy"
+            Then I should see "Your article was published."
+      </pre>
+      <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/Background">https://github.com/aslakhellesoy/cucumber/wiki/Background</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Hooks</h1>
+      <h3>support/hooks.rb</h3> 
+      <pre class="brush: ruby">
+        Before do
+          # Do something before each scenario.
+        end
+      </pre>
+      <pre class="brush: ruby">
+        After do |scenario|
+          if(scenario.failed?)
+            subject = "[Project X] #{scenario.exception.message}"
+            send_failure_email(subject)
+          end
+        end
+      </pre>
+      <pre class="brush: ruby">
+        Around('@fast') do |scenario, block|
+          Timeout.timeout(0.5) do
+            block.call
+          end
+        end
+      </pre>
+      <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/Hooks">https://github.com/aslakhellesoy/cucumber/wiki/Hooks</a></cite>
+    </div>
+
+
+    <div class="slide">
+      <h1>Tagged Hooks</h1>
+      <h3>OR tags</h3>
+      <pre class="brush: ruby">
+        Before('@cucumis,@sativus') do
+          # This will only run before scenarios tagged
+          # with @cucumis OR @sativus.
+        end
+      </pre>
+      <h3>AND tags</h3>
+      <pre class="brush: ruby">
+        Before('@cucumis', '@sativus') do
+          # This will only run before scenarios tagged
+          # with @cucumis AND @sativus.
+        end
+      </pre>
+      <h3>Combination tags</h3>
+      <pre class="brush: ruby">
+        Before('@cucumis,@sativus', '@aqua') do
+          # This will only run before scenarios tagged
+          # with (@cucumis OR @sativus) AND @aqua 
+        end
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h1>Global Hooks</h1>
+      <h3>features/support/env.rb or any other file in this directory</h3>
+      <pre class="brush: ruby">
+        my_heavy_object = HeavyObject.new
+        my_heavy_object.do_it
+
+        at_exit do
+          my_heavy_object.undo_it
+        end
+      </pre>
+      <pre class="brush: ruby">
+        AfterConfiguration do |config|
+          puts "Features dwell in #{config.feature_dirs}"
+        end
+      </pre>
+      
+    </div>
+
+    <div class="slide">
+      <h1>Transforms</h1>
+      <h3>support file</h3>
+      <pre class="brush: ruby">
+        Transform /^(-?\d+)$/ do |number|
+          number.to_i
+        end
+      </pre>
+      <h3>step definition file</h3>
+      <pre class="brush: ruby">
+        Then /^a user, named "([^']+)", should have (\d+) followers$/ do |name,count|
+          # Without the transform your count object would be a string
+          # and not a number 
+          count.should be_kind_of(Numeric)
+          #...  
+        end
+      </pre>
+      <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/Step-Argument-Transforms">https://github.com/aslakhellesoy/cucumber/wiki/Step-Argument-Transforms</a></cite>
+      <cite><a href="http://drnicwilliams.com/2009/04/15/cucumber-building-a-better-world-object/">http://drnicwilliams.com/2009/04/15/cucumber-building-a-better-world-object/</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>World</h1>
+      <h3>features/support/env.rb</h3>
+      <pre class="brush: ruby">
+        class CustomWorld
+          def a_helper
+            ...
+          end
+        end
+
+        World do
+          CustomWorld.new
+        end
+      </pre>
+      <h3>step definition file</h3>
+      <pre class="brush: ruby">
+        module MyHelper
+          def some_helper
+            ...
+          end
+        end
+
+        World MyHelper
+      </pre>
+      <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/A-Whole-New-World">https://github.com/aslakhellesoy/cucumber/wiki/A-Whole-New-World</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>RCov</h1>
+      <h3>lib/tasks/cucumber.rake</h3>
+      <pre class="brush: ruby">
+        require 'cucumber/rake/task'
+        Cucumber::Rake::Task.new(:features) do |t|
+          t.rcov = true
+          t.rcov_opts = %w{--rails --exclude features,spec,factories,/gems/}
+        end
+      </pre>
+      <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/Using-RCov-with-Cucumber-and-Rails">https://github.com/aslakhellesoy/cucumber/wiki/Using-RCov-with-Cucumber-and-Rails</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Holy Grail</h1>
+      <h2>Full stack testing with headless brower</h2>
+      <ul>
+        <li>Selenium</li>
+        <li>Culerity</li>
+        <li>Evergreen</li>
+        <li>Akephalos</li>
+        <li>Zombie.js</li>
+      </ul>
+      <cite><a href="http://oinopa.com/akephalos/">http://oinopa.com/akephalos/</a></cite>
+      <br/>
+      <cite><a href="http://robots.thoughtbot.com/post/1658763359/thoughtbot-and-the-holy-grail">http://robots.thoughtbot.com/post/1658763359/thoughtbot-and-the-holy-grail</a></cite>
+      <cite><a href="https://github.com/bernerdschaefer/akephalos/issues#issue/47">https://github.com/bernerdschaefer/akephalos/issues#issue/47</a></cite>
+      <cite><a href="https://github.com/jnicklas/evergreen">https://github.com/jnicklas/evergreen</a></cite>
+      <cite><a href="http://labnotes.org/2010/12/30/zombie-js-insanely-fast-full-stack-headless-testing/">http://labnotes.org/2010/12/30/zombie-js-insanely-fast-full-stack-headless-testing/</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Writing better features</h1>
+      <ul>
+        <li><a href="http://elabs.se/blog/15-you-re-cuking-it-wrong">http://elabs.se/blog/15-you-re-cuking-it-wrong</a></li>
+        <li><a href="http://mislav.uniqpath.com/2010/09/cuking-it-right">http://mislav.uniqpath.com/2010/09/cuking-it-right</a></li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h1>Non Ruby/Rails testing</h1>
+      <ul>
+        <li>Examples for Python, Sinatra, TCL, and JavaScript included:
+        <a href="https://github.com/aslakhellesoy/cucumber/tree/master/examples">github.com/aslakhellesoy/cucumber/.../examples</a></li>
+      <li><a href="https://github.com/aslakhellesoy/cucumber/wiki/IronRuby-and-.NET">.NET</a>, 
+        <a href="https://github.com/aslakhellesoy/cucumber/wiki/IronRuby-and-Mono">Mono</a>, 
+        <a href="https://github.com/membase/cucumberl">Erlang</a> supported.</li>
+      <li><a href="https://github.com/aslakhellesoy/cucumber/wiki/Sinatra">Sinatra</a> supported</li>
+      <li>Java (or any JVM language) via <a href="https://github.com/aslakhellesoy/cuke4duke">Cuke4Duke</a></li>
+      <li>iPhone app testing using <a href="https://github.com/unboxed/icuke">iCuke</a>,
+        <a href="https://github.com/moredip/frank">Frank</a>, or <a href="https://github.com/josephwilk/irobat/">IRobat</a></li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h1>Alternatives</h1>
+      <ul>
+        <li>Unencumbered - cucumber-style integration tests</li>
+        <li>Steak - BDD in plain ruby</li>
+      </ul>
+      <cite><a href="http://mrjaba.posterous.com/acceptance-testing-and-cucumber-alternatives">http://mrjaba.posterous.com/acceptance-testing-and-cucumber-alternatives</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>RSpec Book</h1>
+      <div class="center">
+        <img src="images/rspec-book.jpg" alt="RSpec Book"/>
+      </div>
+    </div>
+
+    <div class="slide">
+      <h1>Cukeup!</h1>
+      <div class="center">
+        <img src="images/cukeup.png" alt="London March 24th, 2011 - Cukeup!"/>
+      </div>
+      <div class="center">
+        <a href="http://skillsmatter.com/event/home/cukeup">http://skillsmatter.com/event/home/cukeup</a>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="vcenter">
+        <h1>Thank you!</h1>
+        <h2>Any questions?</h2>
+      </div>
+    </div>
+  </body>
+</html>
