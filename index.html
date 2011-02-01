@@ -201,7 +201,7 @@
           gem 'capybara'
           gem 'database_cleaner'
         end
-      </pre>      
+      </pre>
       <pre class="brush: bash; class-name: 'border'">
         rails generate cucumber:install
       </pre>
@@ -224,17 +224,17 @@
       <pre class="brush: yaml">
         &lt;%
         rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
-        rerun_opts = rerun.to_s.strip.empty? ? 
-          "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : 
+        rerun_opts = rerun.to_s.strip.empty? ?
+          "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" :
           "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
         std_opts = "--format #{ENV['CUCUMBER_FORMAT'] ||
           'progress'} --strict --tags ~@wip"
         %&gt;
         default: &lt;%= std_opts %&gt; features
         wip: --tags @wip:3 --wip features
-        rerun: &lt;%= rerun_opts %&gt; --format rerun --out rerun.txt 
+        rerun: &lt;%= rerun_opts %&gt; --format rerun --out rerun.txt
           --strict --tags ~@wip
-      </pre>      
+      </pre>
       <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/cucumber.yml">https://github.com/aslakhellesoy/cucumber/wiki/cucumber.yml</a></cite>
     </div>
 
@@ -262,7 +262,7 @@
         end
 
         World(NavigationHelpers)
-      </pre>      
+      </pre>
     </div>
 
     <div class="slide">
@@ -298,7 +298,7 @@
         <li>json</li>
         <li>junit</li>
         <li>pdf</li>
-      </ul> 
+      </ul>
     </div>
 
     <div class="slide">
@@ -384,7 +384,7 @@
         Factory.define :recruiter, :parent => :user do |recruiter|
           recruiter.is_recruiter { true }
         end
-      </pre>      
+      </pre>
       <h3>Cucumber</h3>
       <pre class="brush: gherkin">
         Given a user exists
@@ -408,7 +408,7 @@
             | start | eat | left |
             |  12   |  5  |  7   |
             |  20   |  5  |  15  |
-      </pre>      
+      </pre>
       <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/Scenario-outlines">https://github.com/aslakhellesoy/cucumber/wiki/Scenario-outlines</a></cite>
     </div>
 
@@ -446,7 +446,7 @@
 
     <div class="slide">
       <h1>Hooks</h1>
-      <h3>support/hooks.rb</h3> 
+      <h3>support/hooks.rb</h3>
       <pre class="brush: ruby">
         Before do
           # Do something before each scenario.
@@ -491,7 +491,7 @@
       <pre class="brush: ruby">
         Before('@cucumis,@sativus', '@aqua') do
           # This will only run before scenarios tagged
-          # with (@cucumis OR @sativus) AND @aqua 
+          # with (@cucumis OR @sativus) AND @aqua
         end
       </pre>
     </div>
@@ -512,7 +512,7 @@
           puts "Features dwell in #{config.feature_dirs}"
         end
       </pre>
-      
+
     </div>
 
     <div class="slide">
@@ -527,9 +527,9 @@
       <pre class="brush: ruby">
         Then /^a user, named "([^']+)", should have (\d+) followers$/ do |name,count|
           # Without the transform your count object would be a string
-          # and not a number 
+          # and not a number
           count.should be_kind_of(Numeric)
-          #...  
+          #...
         end
       </pre>
       <cite><a href="https://github.com/aslakhellesoy/cucumber/wiki/Step-Argument-Transforms">https://github.com/aslakhellesoy/cucumber/wiki/Step-Argument-Transforms</a></cite>
@@ -582,7 +582,7 @@
       <ul>
         <li>Selenium</li>
         <li>Culerity</li>
-        <li>Evergreen</li>
+        <li>Capybara-env.js</li>
         <li>Akephalos</li>
         <li>Zombie.js</li>
       </ul>
@@ -590,16 +590,10 @@
       <br/>
       <cite><a href="http://robots.thoughtbot.com/post/1658763359/thoughtbot-and-the-holy-grail">http://robots.thoughtbot.com/post/1658763359/thoughtbot-and-the-holy-grail</a></cite>
       <cite><a href="https://github.com/bernerdschaefer/akephalos/issues#issue/47">https://github.com/bernerdschaefer/akephalos/issues#issue/47</a></cite>
-      <cite><a href="https://github.com/jnicklas/evergreen">https://github.com/jnicklas/evergreen</a></cite>
+      <br/>
+      <cite><a href="https://github.com/smparkes/capybara-envjs">https://github.com/smparkes/capybara-envjs</a></cite>
+      <br/>
       <cite><a href="http://labnotes.org/2010/12/30/zombie-js-insanely-fast-full-stack-headless-testing/">http://labnotes.org/2010/12/30/zombie-js-insanely-fast-full-stack-headless-testing/</a></cite>
-    </div>
-
-    <div class="slide">
-      <h1>Writing better features</h1>
-      <ul>
-        <li><a href="http://elabs.se/blog/15-you-re-cuking-it-wrong">http://elabs.se/blog/15-you-re-cuking-it-wrong</a></li>
-        <li><a href="http://mislav.uniqpath.com/2010/09/cuking-it-right">http://mislav.uniqpath.com/2010/09/cuking-it-right</a></li>
-      </ul>
     </div>
 
     <div class="slide">
@@ -607,13 +601,22 @@
       <ul>
         <li>Examples for Python, Sinatra, TCL, and JavaScript included:
         <a href="https://github.com/aslakhellesoy/cucumber/tree/master/examples">github.com/aslakhellesoy/cucumber/.../examples</a></li>
-      <li><a href="https://github.com/aslakhellesoy/cucumber/wiki/IronRuby-and-.NET">.NET</a>, 
-        <a href="https://github.com/aslakhellesoy/cucumber/wiki/IronRuby-and-Mono">Mono</a>, 
+      <li><a href="https://github.com/aslakhellesoy/cucumber/wiki/IronRuby-and-.NET">.NET</a>,
+        <a href="https://github.com/aslakhellesoy/cucumber/wiki/IronRuby-and-Mono">Mono</a>,
         <a href="https://github.com/membase/cucumberl">Erlang</a> supported.</li>
       <li><a href="https://github.com/aslakhellesoy/cucumber/wiki/Sinatra">Sinatra</a> supported</li>
       <li>Java (or any JVM language) via <a href="https://github.com/aslakhellesoy/cuke4duke">Cuke4Duke</a></li>
       <li>iPhone app testing using <a href="https://github.com/unboxed/icuke">iCuke</a>,
         <a href="https://github.com/moredip/frank">Frank</a>, or <a href="https://github.com/josephwilk/irobat/">IRobat</a></li>
+      </ul>
+    </div>
+
+    <div class="slide">
+      <h1>Writing better features</h1>
+      <ul>
+        <li><a href="http://elabs.se/blog/15-you-re-cuking-it-wrong">http://elabs.se/blog/15-you-re-cuking-it-wrong</a></li>
+        <li><a href="http://mislav.uniqpath.com/2010/09/cuking-it-right">http://mislav.uniqpath.com/2010/09/cuking-it-right</a></li>
+        <li><a href="http://dannorth.net/2011/01/31/whose-domain-is-it-anyway/">http://dannorth.net/2011/01/31/whose-domain-is-it-anyway/</a></li>
       </ul>
     </div>
 
@@ -624,6 +627,66 @@
         <li>Steak - BDD in plain ruby</li>
       </ul>
       <cite><a href="http://mrjaba.posterous.com/acceptance-testing-and-cucumber-alternatives">http://mrjaba.posterous.com/acceptance-testing-and-cucumber-alternatives</a></cite>
+    </div>
+
+    <div class="slide">
+      <h1>Unencumbered</h1>
+      <h3>spec/integration/user_creates_vurl_spec.rb</h3>
+      <pre class="brush: ruby">
+        Feature "User creates a vurl" do
+          Scenario "creating" do
+            Given "I am on the home page" do
+              executes { visit root_path }
+
+              When "I submit a valid vurl" do
+                executes do
+                  fill_in &quot;vurl_url&quot;, :with =&gt; 'http://example.com'
+                  click_button 'Vurlify!'
+                end
+
+                Then "I should be on the vurl stats page" do
+                  current_url.should == stats_url(Vurl.last.slug)
+                end
+
+                And "I should see a success message" do
+                  response.body.should include('Vurl was successfully created')
+                end
+
+                And "my vurl was created" do
+                  Vurl.last.url.should == 'http://example.com'
+                end
+              end
+            end
+          end
+        end
+      </pre>
+    </div>
+
+    <div class="slide">
+      <h1>Steak</h1>
+      <h3>spec/acceptance/main_page_feature.rb</h3>
+      <pre class="brush: ruby">
+        feature &quot;Main page&quot; do
+
+          background do
+            create_user :login =&gt; &quot;jdoe&quot;
+            login_as &quot;jdoe&quot;
+          end
+
+          scenario &quot;should show existing quotes&quot; do
+            create_quote :text =&gt; &quot;A joke is a very serious thing&quot;,
+                         :author =&gt; &quot;Winston Churchill&quot;
+
+            visit &quot;/&quot;
+
+            page.should have_css(&quot;.quote&quot;, :count =&gt; 1)
+            within(:css, &quot;.quote&quot;) do
+              page.should have_css(&quot;.text&quot;, :text =&gt; &quot;A joke is a very serious thing&quot;)
+              page.should have_css(&quot;.author&quot;, :text =&gt; &quot;Winston Churchill&quot;)
+            end
+          end
+        end
+      </pre>
     </div>
 
     <div class="slide">
